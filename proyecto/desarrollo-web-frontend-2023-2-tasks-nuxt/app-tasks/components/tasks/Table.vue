@@ -22,7 +22,7 @@
                     <td>{{ item.name }}</td>
                     <td>{{ item.description }}</td>
                     <td>
-                        <v-btn icon="mdi-pencil" variant="text"    @click="editTask(item)">
+                        <v-btn icon="mdi-pencil" variant="text" @click="editTask(item)">
                         </v-btn>
                         <v-btn icon="mdi-delete-off" variant="text" @click="deleteTask(item)">
                         </v-btn>
@@ -30,16 +30,16 @@
                 </tr>
             </tbody>
         </v-table>
-<tasks-edit-dialog :dialog="isEdit" :task="editingTask"/>
+        <tasks-edit-dialog v-if="editingTask != null" :dialog="isEdit" :task="editingTask" @update="updateTask" />
     </div>
 </template>
 <script setup>
-
 import axios from "axios";
 
-const tasks =  ref([])
+const tasks = ref([])
 const isEdit = ref(false)
-const editingTask=ref({})
+const editingTask = ref(null)
+
 onBeforeMount(() => {
     loadTasks()
 })
@@ -49,16 +49,22 @@ const loadTasks = async () => {
     const { data } = await axios.get(url)
     tasks.value = data
 }
-const deleteTask =async (item) => {
+const deleteTask = async (item) => {
     const url = `http://localhost:3001/tasks/${item.id}`
     const { data } = await axios.delete(url)
-   loadTasks()
+    loadTasks()
 }
-const editTask =async (item) => {
-    isEdit.value=true
-editingTask.value=item
-//     const url = `http://localhost:3001/tasks/${item.id}`
-//     const { data } = await axios.delete(url)
-//    loadTasks()
+const editTask = async (item) => {
+    isEdit.value = true
+    editingTask.value = { ...item }
+    console.log(editingTask.value);
+
 }
-</script>
+
+const updateTask = (isUpdated) => {
+    console.log(isUpdated);
+    isEdit.value=false
+    editingTask.value=null
+    loadTasks()
+}
+</script>           
