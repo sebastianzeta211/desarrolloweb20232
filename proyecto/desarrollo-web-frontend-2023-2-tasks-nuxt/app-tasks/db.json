@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "conditions": true,
+      "period": "1",
+      "name": "test",
+      "email": "test@test.udem.co",
+      "description": "test",
+      "type": "typeA",
+      "id": 1
+    }
+  ],
+  "users": [
+    {
+      "status": true,
+      "nombres": "Sebastian",
+      "apellidos": "1",
+      "fecha": "21/10/1994",
+      "email": "sebastianzeta211@gmail.com",
+      "programa": "Ing de sistemas",
+      "ciudad": "Bello",
+      "id": 1
+    }
+  ]
+}

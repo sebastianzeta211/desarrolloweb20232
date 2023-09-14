@@ -11,111 +11,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200&family=Source+Sans+3:ital@1&display=swap" rel="stylesheet">
 </head>
 <body>
-<style>
-    body {
 
-        font-family: 'Inter', sans-serif;
-font-family: 'Source Sans 3', sans-serif;
-margin: 80px 80px 25px;;
+    <div> 
+         <div class='form-group'> 
+             <label >Observación (Opcional)</label>       
+             <textarea onkeyup='countChars2(this);' class='form-control' id='txtObservationInscription' name='txtObservationInscription'  maxlength='1000' rows='3' autofocus></textarea><div id='the-count'> 
+                   <span id='current2'>0</span>    <span id='maximum'>/ 1000</span>  </div>  </div>
+                   <label> <input type='radio' id='rbObservation' name='rbObservation' value='Seleccione esta opción si desea inactivar el estado del aspirante.'>Seleccione esta opción si desea inactivar el estado del aspirante.</label>
+                 </div><br/>
+                 <div style='align-items: center;padding-left: 250px;'>
+                    <button  style='padding:8px' onClick='InsertObservationInscription()'>Ingresar</button></div>
+
+
+<script>
+
+function InsertObservationInscription() {
+    var textarea = document.getElementById('txtObservationInscription');
+    var rbstatus = document.getElementById('rbObservation');
+    if (textarea.value.trim() !== '') {
+
+        console.log({ "observacion": textarea.value, "status": rbstatus.checked });
+
+
+
+    } else {
+
+ 
+
+
     }
 
-</style>     
-  
-    <h2>Hoja de vida. Sebastian Zapata.</h2>
-    <h3>Ingeniería de Sistemas</h3>
-    
-   
-    <table style="margin-left:auto;margin-right:auto;">
-    <tr>
-      <td> <img src="descarga.jfif">
-      </td>
-   
-     
-      <td>
-        <a href="https://www.linkedin.com/in/sebastian-zapata-cuervo-796a9883/" ><img style="height: 30px;width: 30px;"  src="descarga2.png"></a>
-        
-        </td>
-         </tr>
 
-        </table>
+}
 
+function countChars2(obj) {
+     var maxLength = 1000;
+     var strLength = obj.value.length;
 
-
-
-
-
-
-
-
-
-
-
-<br>
-<br>
-        <h4>Perfil Personal</h4>
-        <p >Tengo habilidades de generar comunicación asertivas con los clientes y la empresa. Mi comunicación es abierta lo que
-         me permite crear relaciones de confianza para llegar a obtener acuerdos y requerimientos de ambas partes; logrando
-         su ciclo de desarrollo a través de análisis de necesidades y soluciones adecuadas. Estoy en la constante investigación
-         de tendencias, mejoras y soluciones para crear oportunidades.
-         Características en liderazgo y trabajo en equipo. Conocimientos en bases de datos, lenguajes de programación e
-         investigación.
-       
-        </p>
-
-
-
-<table style="margin-left:auto;margin-right:auto;">
-    <tr>
-      <td><strong>Áreas de especialización</strong></td>
-   
-     
-      <td><strong>Experiencia laboral</strong></td>
-         </tr>
-    
-    <tr>
-      <td><ul>
-        <li>Experiencia práctica en SQL
-            SERVER</li>
-        <li>Dominio de JavaScrip</li>
-        <li>Familiarización con ASP.NET.</li>
-        <li>Nivel avanzado en lenguaje C#</li>
-        <li>Framework Bootstrap.</li>
-        <li>Conocimientos avanzado en CRM
-            Salesforce</li>
-     
-    
-    </ul> </td>
-    <td>
-        <p>Arquitecto de software. Grupo Solutec | 2018 - 2022</p>
-        
-        <ul>
-        <li>Dirección de desarrollo y diseño de software
-        </li>
-        <li>Evaluación de la interfaz entre el hardware y el software</li>
-        <li>Asesoramiento, soporte y capacitación sobre producto, plataformas y servicios</li>
-        <li>Desarrollo de productos y servicios.</li>
-        <li>Gestión y seguimiento de proyectos.</li>
-    
-     
-    
-    </ul> </td>  
-    
-    </tr>
-<tr> 
-</tr>
-
-  
-    </table>
-
-
-
-
-
-
-
-
-
-
+     if (strLength > 9999) {
+         document.getElementById("current2").innerHTML = '<span style="color: red;">Máximo de carácteres</span>';
+     }
+ }
+</script>
 
 </body>
 </html>
